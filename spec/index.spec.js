@@ -136,4 +136,27 @@ describe("Bootcamp Tutoring Week 2 - Mini-assessment", function(){
             Array.prototype.reduce.called.should.be.true;
         });
     });
+
+    describe("reducePlayoffResults", function(){
+        beforeEach(function () {
+            sinon.spy(Array.prototype, 'reduce');
+        });
+      
+        afterEach(function () {
+            Array.prototype.reduce.restore();
+        });
+        it('should return a string', function(){
+            const result = funnyTeams(teams);
+            assert.equal(typeof result, 'string');
+        });
+        it('should return a correct string', function(){
+            const result = funnyTeams(teams);
+            const correct = "University of Tennessee Saints\nLSU Commanders\nLSU Bengals\nUniversity of California Lions\n";
+            assert.equal(result, correct);
+        });
+        it('should use the native reduce method', function(){
+            const result = funnyTeams(teams);
+            Array.prototype.reduce.called.should.be.true;
+        });
+    });
 });

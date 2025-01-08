@@ -53,4 +53,12 @@ const reducePlayoffResults = (array) => {
     }, []);
 };
 
-console.log(reducePlayoffResults(teams));
+// Problem #6 //
+const funnyTeams = (array) => {
+    return array.reduce((acc, team) => {
+        acc += team.bestPlayers[0].college.university + " " + team.teamName + "\n";
+        return acc;
+    }, "");
+};
+
+console.log(funnyTeams(teams));
