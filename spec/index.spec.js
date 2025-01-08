@@ -55,7 +55,7 @@ describe("Bootcamp Tutoring Week 2 - Mini-assessment", function(){
         });
     });
 
-    describe("getSuperBowlWinners", function(){
+    describe("getTeamsByCollege", function(){
         beforeEach(function () {
             sinon.spy(Array.prototype, 'filter');
         });
@@ -75,6 +75,65 @@ describe("Bootcamp Tutoring Week 2 - Mini-assessment", function(){
         it('should use the native filter method', function(){
             const result = getTeamsByCollege(teams, 'LSU');
             Array.prototype.filter.called.should.be.true;
+        });
+    });
+
+    describe("mapTeams", function(){
+        beforeEach(function () {
+            sinon.spy(Array.prototype, 'map');
+        });
+      
+        afterEach(function () {
+            Array.prototype.map.restore();
+        });
+        it('should return an array', function(){
+            const result = mapTeams(teams);
+            assert.equal(Array.isArray(result), true);
+        });
+        it('should return a correct array of objects', function(){
+            const result = mapTeams(teams);
+            const correct = [
+                {team: 'New Orleans Saints', bestPlayer: 'Alvin Kamara', bestPlayoffResult: '2009 Final'},
+                {team: 'Washington D.C. Commanders', bestPlayer: 'Jayden Daniels', bestPlayoffResult: '1991 Final'},
+                {team: 'Cincinnati Bengals', bestPlayer: 'Joe Burrow', bestPlayoffResult: '2021 Final'},
+                {team: 'Detroit Lions', bestPlayer: 'Jared Goff', bestPlayoffResult: '2023 Conference Championship'}
+            ];
+            assert.deepEqual(result, correct);
+        });
+        it('should use the native map method', function(){
+            const result = mapTeams(teams);
+            Array.prototype.map.called.should.be.true;
+        });
+    });
+
+    describe("reducePlayoffResults", function(){
+        beforeEach(function () {
+            sinon.spy(Array.prototype, 'reduce');
+        });
+      
+        afterEach(function () {
+            Array.prototype.reduce.restore();
+        });
+        it('should return an array', function(){
+            const result = reducePlayoffResults(teams);
+            assert.equal(Array.isArray(result), true);
+        });
+        it('should return a correct array of objects', function(){
+            const result = reducePlayoffResults(teams);
+            const correct = [
+                'Won 2009 Final against the Indianapolis Colts', 
+                'Lost 2018 Conference Championship against the Los Angeles Rams', 
+                'Won 1991 Final against the Buffalo Bills', 
+                'Won 1987 Final against the Denver Broncos', 
+                'Lost 2021 Final against the Los Angeles Rams', 
+                'Lost 2022 Conference Championship against the Kansas City Chiefs', 
+                'Lost 2023 Conference Championship against the San Francisco 49ers'
+            ]
+            assert.deepEqual(result, correct);
+        });
+        it('should use the native reduce method', function(){
+            const result = reducePlayoffResults(teams);
+            Array.prototype.reduce.called.should.be.true;
         });
     });
 });

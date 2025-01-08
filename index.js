@@ -32,4 +32,25 @@ const getTeamsByCollege = (array, college) => {
     });
 };
 
-console.log(getTeamsByCollege(teams, 'LSU'));
+// Problem #4 //
+const mapTeams = (array) => {
+    return array.map(team => {
+        return {
+            team: `${team.location } ${team.teamName}`,
+            bestPlayer: `${team.bestPlayers[0].name}`,
+            bestPlayoffResult: `${team.bestPlayoffResults[0].year} ${team.bestPlayoffResults[0].round}`
+        }
+    });
+};
+
+// Problem #5 // 
+const reducePlayoffResults = (array) => {
+    return array.reduce((acc, team) => {
+        team.bestPlayoffResults.forEach(r => {
+            acc.push(`${r.result} ${r.year} ${r.round} against the ${r.opponent}`);
+        })
+        return acc;
+    }, []);
+};
+
+console.log(reducePlayoffResults(teams));
