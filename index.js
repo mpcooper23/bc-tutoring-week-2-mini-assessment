@@ -16,8 +16,11 @@ C:forEach X 2
 
 
 const logBestPlayers = (array) => {
-    array.forEach(team => team.bestPlayers.name).forEach(team.bestPlayers.college.university)
-   return console.log(`${team.bestPlayers.name} - ${team.bestPlayers.position} - College: ${team.bestPlayers.college.univeristy}`)
+    array.forEach(team => {
+        team.bestPlayers.forEach(player =>{
+   console.log(`${player.name} - ${player.position} - College: ${player.college.university}`)
+})
+})
 }
 
 // Problem #2 //
