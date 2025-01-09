@@ -7,6 +7,11 @@ should use the `forEach` method to iterate through the input array and then it s
 use the `forEach` method again to iterate through each team's `bestPlayers` property. 
 At each iteration, the function should log every player's name, position, and which 
 college they attended.
+
+I: array
+O: log name, position, college
+C:forEach X 2
+
 */
 
 
@@ -22,10 +27,15 @@ which represents an array of NFL team objects like the one in data.js. This func
 should use the native filter method to return a new array of only the NFL team objects 
 that have won a Superbowl (note that in the bestPlayoffResults arrays a Superbowl 
 appearance is marked as "Final" at the round key).
+
+I: array
+O: new array of objects, superbowl winning teams
+C:filter
+
 */
 const getSuperBowlWinners = (array) => {
-   return array.filter(team => {if(team.bestPlayoffResults.round === "Final")
-        return team.playerName});
+  return array.filter(team => {if(team.bestPlayoffResults.round === "Final")
+        team.push(array)});
     };
 
 // Problem #3 //
@@ -36,6 +46,10 @@ const getSuperBowlWinners = (array) => {
  * of the college a player attended. This function should use the native filter method to 
  * return a new array of only the NFL team objects who have a player that attended the input 
  * college.
+ * 
+ * I: array and team (string data)
+O: new array of players who attended input college
+C:filter
  */
 
 const getTeamsByCollege = (array, team) => {
@@ -55,6 +69,11 @@ const getTeamsByCollege = (array, team) => {
  * objects that looks like the example below. For the bestPlayer and 
  * bestPlayoffResult keys only need to access the current team's zero 
  * index player and playoff result.
+ * 
+ * I: array
+O: new array of objects with team, best player, best playoff result
+C: map
+ * 
  */ 
 
 const mapTeams = (array) => {
@@ -69,6 +88,9 @@ const mapTeams = (array) => {
  * follows this format: <result of game> <year of playoff game> <round of playoff game> 
  * against the <opponent in playoff game>.
 
+ I: array
+O: new array of strings formatted as shown above
+C: reduce
  */
 
 const reducePlayoffResults = (array) => {
@@ -86,11 +108,16 @@ return acc += `${team.bestPlayoffResults.score} ${team.bestPlayoffResults.year} 
  * which represents an array of NFL team objects like the one in data.js. 
  * This function should use the native reduce method to return a string of 
  * each team's name preceeded by the college name of their zero index best player.
+ * 
+ *  I: array
+O: new string of each teams name preceeded by the college name of their zero index best player
+C: reduce
+ * 
  */
 
 const funnyTeams = (array) => {
-    return array.reduce((acc, current) => {
-        acc += `${team.bestPlayer[0].college.university} ${team.teamName}`
+    return array.reduce((acc, team) => {
+        acc += `${team.bestPlayers[0].college.university} ${team.teamName}`
     }, '')
 };
 
