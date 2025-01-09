@@ -88,7 +88,7 @@ return acc += `${team.bestPlayoffResults.score} ${team.bestPlayoffResults.year} 
 
 const funnyTeams = (array) => {
     return array.reduce((acc, current) => {
-
+        acc += `${team.bestPlayer[0].college.university} ${team.teamName}`
     }, '')
 };
 
