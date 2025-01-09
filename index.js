@@ -11,9 +11,8 @@ college they attended.
 
 
 const logBestPlayers = (array) => {
-     array.forEach(teams.bestPlayers.name).forEach(teams.bestPlayers.college.university)
-      return console.log(`${teams.bestPlayers.name} - ${teams.bestPlayers.position} - College: ${teams.bestPlayers.college.univeristy}`)
-    
+    array.forEach(team => team.bestPlayers.name).forEach(team.bestPlayers.college.university)
+   return console.log(`${team.bestPlayers.name} - ${team.bestPlayers.position} - College: ${team.bestPlayers.college.univeristy}`)
 }
 
 // Problem #2 //
