@@ -37,21 +37,56 @@ const getSuperBowlWinners = (array) => {
  */
 
 const getTeamsByCollege = (array, team) => {
-    
+    return array.filter(teams => {
+        if(teams.bestPlayers.college === team){
+            return teams.teamName;
+        }
+    })
 };
 
 // Problem #4 //
-const mapTeams = () => {
-    
+
+/**
+ * Create a function called mapTeams that takes in one parameter - array - 
+ * which represents an array of NFL team objects like the one in data.js. 
+ * This function should use the native map method to return a new array of 
+ * objects that looks like the example below. For the bestPlayer and 
+ * bestPlayoffResult keys only need to access the current team's zero 
+ * index player and playoff result.
+ */ 
+
+const mapTeams = (array) => {
+    return array.map(team => {team[bestPlayer][0], team[bestPlayoffResult][0]})
 };
 
-// Problem #5 // 
-const reducePlayoffResults = () => {
-    
+// Problem #5 //
+/**
+ * Create a function called reducePlayoffResults that takes in one parameter - array - 
+ * which represents an array of NFL team objects like the one in data.js. This function 
+ * should use the native reduce method to return a new array of strings, where each string 
+ * follows this format: <result of game> <year of playoff game> <round of playoff game> 
+ * against the <opponent in playoff game>.
+
+ */
+
+const reducePlayoffResults = (array) => {
+    return array.reduce((acc, team) => {
+return acc += `${team.bestPlayoffResults.score} ${team.bestPlayoffResults.year} ${team.bestPlayoffResults.round} ${
+    team.bestPlayoffResults.opponent
+}`
+   }, '')
+    return acc
 };
 
 // Problem #6 //
-const funnyTeams = () => {
+/**
+ * Create a function called funnyTeams that takes in one parameter - array - 
+ * which represents an array of NFL team objects like the one in data.js. 
+ * This function should use the native reduce method to return a string of 
+ * each team's name preceeded by the college name of their zero index best player.
+ */
+
+const funnyTeams = (array) => {
     
 };
 
