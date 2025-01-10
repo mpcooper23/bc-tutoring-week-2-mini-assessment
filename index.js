@@ -37,9 +37,16 @@ C:filter
 
 */
 const getSuperBowlWinners = (array) => {
-  return array.filter(team => {if(team.bestPlayoffResults.round === "Final")
-        team.push(array)});
-    };
+  return array.filter(team => {
+   const results = team.bestPlayoffResults;
+  for (let i = 0; i < results.length; i++){
+        if(results[i].round === 'Final' && results[i].result === "Won"){
+            return true  
+        }
+    }}
+    )
+  };
+    
 
 // Problem #3 //
 
