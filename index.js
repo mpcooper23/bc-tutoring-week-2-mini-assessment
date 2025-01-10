@@ -62,10 +62,10 @@ O: new array of players who attended input college
 C:filter
  */
 
-const getTeamsByCollege = (array, team) => {
-    return array.filter(teams => {
-        if(teams.bestPlayers.college === team){
-            return teams.teamName;
+const getTeamsByCollege = (array, teams) => {
+    return array.filter(team => {
+        if(team.bestPlayers.college === teams){
+            return team.teamName;
         }
     })
 };
@@ -87,7 +87,7 @@ C: map
  */ 
 
 const mapTeams = (array) => {
-    return array.map(team => {team[bestPlayer][0], team[bestPlayoffResult][0]})
+    return array.map(team => {team[bestPlayers][0], team[bestPlayoffResult][0]})
 };
 
 // Problem #5 //
