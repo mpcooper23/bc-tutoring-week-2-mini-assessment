@@ -8,20 +8,12 @@ use the `forEach` method again to iterate through each team's `bestPlayers` prop
 At each iteration, the function should log every player's name, position, and which 
 college they attended.
 
-I: array
-O: log name, position, college
-C:forEach X 2
-
 */
 
-
-const logBestPlayers = (array) => {
-    array.forEach(team => {
-        team.bestPlayers.forEach(player =>{
-   console.log(`${player.name} - ${player.position} - College: ${player.college.university}`)
-})
-})
+let logBestPlayers = (array) => {
+    array.forEach(team => team.forEach(player => `${player.name} - ${player.position} - ${player.college.university}`))
 }
+
 
 // Problem #2 //
 /*
@@ -31,22 +23,8 @@ should use the native filter method to return a new array of only the NFL team o
 that have won a Superbowl (note that in the bestPlayoffResults arrays a Superbowl 
 appearance is marked as "Final" at the round key).
 
-I: array
-O: new array of objects, superbowl winning teams
-C:filter
-
 */
-const getSuperBowlWinners = (array) => {
-  return array.filter(team => {
-   const results = team.bestPlayoffResults;
-  for (let i = 0; i < results.length; i++){
-        if(results[i].round === 'Final' && results[i].result === "Won"){
-            return true  
-        }
-    }}
-    )
-  };
-    
+
 
 // Problem #3 //
 
@@ -57,18 +35,9 @@ const getSuperBowlWinners = (array) => {
  * return a new array of only the NFL team objects who have a player that attended the input 
  * college.
  * 
- * I: array and team (string data)
-O: new array of players who attended input college
-C:filter
  */
 
-const getTeamsByCollege = (array, teams) => {
-    return array.filter(team => {
-        if(team.bestPlayers.college === teams){
-            return team.teamName;
-        }
-    })
-};
+
 
 // Problem #4 //
 
@@ -80,15 +49,8 @@ const getTeamsByCollege = (array, teams) => {
  * bestPlayoffResult keys only need to access the current team's zero 
  * index player and playoff result.
  * 
- * I: array
-O: new array of objects with team, best player, best playoff result
-C: map
- * 
- */ 
 
-const mapTeams = (array) => {
-    return array.map(team => {team[bestPlayers][0], team[bestPlayoffResult][0]})
-};
+ */ 
 
 // Problem #5 //
 /**
@@ -98,19 +60,9 @@ const mapTeams = (array) => {
  * follows this format: <result of game> <year of playoff game> <round of playoff game> 
  * against the <opponent in playoff game>.
 
- I: array
-O: new array of strings formatted as shown above
-C: reduce
  */
 
-const reducePlayoffResults = (array) => {
-    return array.reduce((acc, team) => {
-return acc += `${team.bestPlayoffResults.score} ${team.bestPlayoffResults.year} ${team.bestPlayoffResults.round} ${
-    team.bestPlayoffResults.opponent
-}`
-   }, '')
-    return acc
-};
+
 
 // Problem #6 //
 /**
@@ -119,15 +71,8 @@ return acc += `${team.bestPlayoffResults.score} ${team.bestPlayoffResults.year} 
  * This function should use the native reduce method to return a string of 
  * each team's name preceeded by the college name of their zero index best player.
  * 
- *  I: array
-O: new string of each teams name preceeded by the college name of their zero index best player
-C: reduce
  * 
  */
 
-const funnyTeams = (array) => {
-    return array.reduce((acc, team) => {
-        acc += `${team.bestPlayers[0].college.university} ${team.teamName}`
-    }, '')
-};
+
 
