@@ -11,7 +11,7 @@ college they attended.
 */
 
 let logBestPlayers = (array) => {
-    array.forEach(team => team.forEach(player => `${player.name} - ${player.position} - ${player.college.university}`))
+    array.forEach(team => team.bestPlayers.forEach(player => `${player.name} - ${player.position} - ${player.college.university}`))
 }
 
 
@@ -24,6 +24,16 @@ that have won a Superbowl (note that in the bestPlayoffResults arrays a Superbow
 appearance is marked as "Final" at the round key).
 
 */
+
+let getSuperBowlWinners = (array) => {
+  return array.filter(team => {
+    for(let i = 0; i < team.bestPlayoffResults.length; i++)
+    {team.bestPlayoffResults[i].round === 'Final' && team.bestPlayoffResults[i].result === 'Won'}{
+        return true
+    }
+}
+  );
+}
 
 
 // Problem #3 //
