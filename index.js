@@ -26,14 +26,16 @@ appearance is marked as "Final" at the round key).
 */
 
 let getSuperBowlWinners = (array) => {
-  return array.filter(team => {
-    for(let i = 0; i < team.bestPlayoffResults.length; i++)
-    {team.bestPlayoffResults[i].round === 'Final' && team.bestPlayoffResults[i].result === 'Won'}{
-        return true
+    return array.filter(team => {
+      for (let i = 0; i < team.bestPlayoffResults.length; i++) {
+        if (team.bestPlayoffResults[i].round === 'Final' && team.bestPlayoffResults[i].result === 'Won') {
+          return true;
+        }
     }
-}
-  );
-}
+    });
+  };
+  
+
 
 
 // Problem #3 //
@@ -47,7 +49,20 @@ let getSuperBowlWinners = (array) => {
  * 
  */
 
-
+let getTeamsByCollege = (array, collegeName) => {
+    return array.filter(team => {
+      for (let i = 0; i < team.bestPlayers.length; i++) {
+        if (team.bestPlayers[i].college.university === collegeName) {
+          return true;
+        }
+      }
+      return false;
+    });
+  };
+  
+  const teamsByCollege = getTeamsByCollege(teams, 'LSU');
+  console.log(teamsByCollege);
+  
 
 // Problem #4 //
 
@@ -62,6 +77,8 @@ let getSuperBowlWinners = (array) => {
 
  */ 
 
+
+
 // Problem #5 //
 /**
  * Create a function called reducePlayoffResults that takes in one parameter - array - 
@@ -71,8 +88,19 @@ let getSuperBowlWinners = (array) => {
  * against the <opponent in playoff game>.
 
  */
-
-
+let reducePlayoffResults = (array) => {
+    return array.reduce((accumulator, team) => {
+      for (let i = 0; i < team.bestPlayoffResults.length; i++) {
+        let result = team.bestPlayoffResults[i];
+        let resultString = `${result.result} ${result.year} ${result.round} against the ${result.opponent}`;
+        accumulator.push(resultString);
+      }
+      return accumulator;
+    }, []);
+  };
+  
+ 
+  
 
 // Problem #6 //
 /**
