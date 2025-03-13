@@ -112,5 +112,12 @@ let reducePlayoffResults = (array) => {
  * 
  */
 
-
+let funnyTeams = (array) => {
+    return array.reduce((acc, current) => {
+for (let i = 0; i < current.bestPlayers.length; i++){
+    let collegeName = current.bestPlayers[i][current.bestPlayers.length - 1].college.university
+}acc += `${collegeName} ${current.teamName}`;
+return acc;
+    }, '')
+}
 
